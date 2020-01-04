@@ -82,10 +82,72 @@ describe('app routes', () => {
                             subtitle: page.notes[0].subtitle,
                             author: page.notes[0].author,
                             text: page.notes[0].text,
-                            noteDate: page.notes[0].noteDate.toISOString()
+                            noteDate: expect.any(String)
                         }],
                         __v: 0
                     });
+                });
+            });
+    });
+
+    it('gets a page by id', async() => {
+        const page = await Page.create({
+            title: 'Titling is hard',
+            pageDate: new Date('January 1, 2020'),
+            notes: [{
+                subtitle: 'Small title',
+                author: 'A writer',
+                text: 'some words they wrote',
+                noteDate: new Date('January 2, 2020')
+            }]
+        });
+        return request(app)
+            .get(`/api/v1/pages/${page._id}`)
+            .then(res => {
+                expect(res.body).toEqual({
+                    _id: page._id.toString(),
+                    title: 'Titling is hard',
+                    pageDate: expect.any(String),
+                    notes: [{
+                        _id: expect.any(String),
+                        subtitle: 'Small title',
+                        author: 'A writer',
+                        text: 'some words they wrote',
+                        noteDate: expect.any(String)
+                    }],
+                    __v: 0
+                });
+            });
+    });
+
+    it('updates a page', async() => {
+        const page = await Page.create({
+            title: 'Titling is hard',
+            pageDate: new Date('January 1, 2020'),
+            notes: [{
+                subtitle: 'Small title',
+                author: 'A writer',
+                text: 'some words they wrote',
+                noteDate: new Date('January 2, 2020')
+            }]
+        });
+
+        return request(app)
+            .patch(`/api/v1/pages/${page._id}`)
+            .send({ title: 'It just got easier' })
+            .then(res => {
+                expect(res.body).toEqual({
+                    _id: expect.any(String),
+                    title: 'It just got easier',
+                    pageDate: expect.any(String),
+                    notes: [{
+                        _id: expect.any(String),
+                        subtitle: 'Small title',
+                        author: 'A writer',
+                        text: 'some words they wrote',
+                        noteDate: expect.any(String)
+                    }],
+                    __v: 0
                 });
             });
     });
