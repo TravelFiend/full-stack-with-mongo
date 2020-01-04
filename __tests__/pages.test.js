@@ -151,4 +151,35 @@ describe('app routes', () => {
                 });
             });
     });
+
+    it('deletes a page by id', async() => {
+        const page = await Page.create({
+            title: 'Titling is hard',
+            pageDate: new Date('January 1, 2020'),
+            notes: [{
+                subtitle: 'Small title',
+                author: 'A writer',
+                text: 'some words they wrote',
+                noteDate: new Date('January 2, 2020')
+            }]
+        });
+
+        return request(app)
+            .delete(`/api/v1/pages/${page._id}`)
+            .then(res => {
+                expect(res.body).toEqual({
+                    _id: page._id.toString(),
+                    title: 'Titling is hard',
+                    pageDate: expect.any(String),
+                    notes: [{
+                        _id: expect.any(String),
+                        subtitle: 'Small title',
+                        author: 'A writer',
+                        text: 'some words they wrote',
+                        noteDate: expect.any(String)
+                    }],
+                    __v: 0
+                });
+            });
+    });
 });
