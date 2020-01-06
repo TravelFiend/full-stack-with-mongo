@@ -1,0 +1,6 @@
+main {
+    background: #d5f2ff;
+    height: calc(100vh - 76px);
+    padding: 10px;
+    z-index: 1;
+}

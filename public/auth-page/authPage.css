@@ -1,0 +1,11 @@
+body, html {
+    margin: 0;
+    height: 100%;
+}
+
+header {
+    background: #3b0f1e;
+    color: white;
+    height: 100px;
+    border-bottom: 2px solid black;
+}

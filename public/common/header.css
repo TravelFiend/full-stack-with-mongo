@@ -1,0 +1,28 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #27050b;
+    color: white;
+    z-index: 5;
+    font-family: sans-serif;
+}
+
+h1 {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;;
+}
+
+a:hover {
+    color: #ff3e3e;
+}
