@@ -20,6 +20,7 @@ class UserSignUp extends Component {
                 </div>
 
                 <button class="auth-button">Create Account</button>
+                <button class="auth-button">Already have an account?</button>
             </form>
         `;
     }

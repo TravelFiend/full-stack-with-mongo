@@ -1,11 +1,11 @@
 import Component from '../Component.js';
-// import UserSignIn from './UserSignIn.js';
+// import UserLogin from './UserLogin.js';
 // import UserSignUp from './UserSignUp.js';
 
 class AuthPageApp extends Component {
-    // onRender(dom){
+    onRender(dom){
 
-    // }
+    }
 
     renderHTML(){
         let user;
@@ -24,12 +24,11 @@ class AuthPageApp extends Component {
             `;
         }
         return /*html*/`
-            <div>
                 <main class="container">
                     <div class="error"></div>
                     <section class="hidden" id="sign-up-spot">
                         <div class="toggle">
-                            <button class="auth-button" id="to-sign-in">Already have an account?</button>
+                            <button class="auth-button" id="to-login">Already have an account?</button>
                         </div>
                     </section>
 
@@ -39,7 +38,6 @@ class AuthPageApp extends Component {
                         </div>
                     </section>
                 </main>
-            </div>
         `;
     }
 }
