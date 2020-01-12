@@ -1,7 +1,11 @@
 import AuthPageApp from './AuthPageApp.js';
-import Header from '../common/Header.js';
 
-const app = new AuthPageApp();
-const header = new Header();
-document.body.prepend(header.renderDOM());
-document.body.appendChild(app.renderDOM());
+const app = new AuthPageApp({ user: null });
+
+const fetchActiveUser = async() => {
+    const user = await fetch('/api/v1/auth/verify');
+    app.update({ user });
+};
+
+fetchActiveUser();
+document.body.prepend(app.renderDOM());

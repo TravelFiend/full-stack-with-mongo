@@ -21,6 +21,7 @@ class UserLogin extends Component {
             })
                 .then(res => res.json())
                 .then(user => {
+                    console.log('res from signup', user);
                     if(user._id){
                         window.location.href = '../my-pages.html';
                     }
@@ -37,13 +38,13 @@ class UserLogin extends Component {
             <div>
                 <form id="login-form">
                     <div>
-                        <label for="email">Email:<label>
-                        <input class="user-input" id="email" name="email" type="email"/>
+                        <label for="login-email">Email:<label>
+                        <input class="user-input" id="login-email" name="login-email" type="email"/>
                     </div>
 
                     <div>
-                        <label for="password">Password:<label>
-                        <input class="user-input" id="password" name="password" type="password"/>
+                        <label for="login-password">Password:<label>
+                        <input class="user-input" id="login-password" name="login-password" type="password"/>
                     </div>
 
                     <button class="auth-button">Login</button>
@@ -53,4 +54,4 @@ class UserLogin extends Component {
     }
 }
 
-module.exports = UserLogin;
+export default UserLogin;

@@ -1,18 +1,39 @@
 import Component from '../Component.js';
-// import UserLogin from './UserLogin.js';
-// import UserSignUp from './UserSignUp.js';
+import Header from '../common/Header.js';
+import UserLogin from './UserLogin.js';
+import UserSignUp from './UserSignUp.js';
 
 class AuthPageApp extends Component {
-    onRender(dom){
+    onRender(dom) {
+        const header = new Header();
+        dom.prepend(header.renderDOM());
+        
+        const signUpSpot = dom.querySelector('#sign-up-spot');
+        const loginSpot = dom.querySelector('#login-spot');
+        const signup = new UserSignUp();
+        const login = new UserLogin();
+        signUpSpot.appendChild(signup.renderDOM());
+        loginSpot.appendChild(login.renderDOM());
 
+        const toggleToSignUp = dom.querySelector('#to-sign-up');
+        toggleToSignUp.addEventListener('click', () => {
+            signUpSpot.classList.remove('hidden');
+            loginSpot.classList.add('hidden');
+        });
+
+        const toggleToLogin = dom.querySelector('#to-login');
+        toggleToLogin.addEventListener('click', () => {
+            loginSpot.classList.remove('hidden');
+            signUpSpot.classList.add('hidden');
+        });
     }
 
     renderHTML(){
-        let user;
-        
+        const user = this.props.user;
+
         if(user){
-            return /*html*/`
-                <div class="container">
+            return `
+                <div class = "container" >
                     <section id="logout-section">
                         <p>Signed in as ${user}<p>
                         <div>
@@ -20,24 +41,24 @@ class AuthPageApp extends Component {
                             <button>Logout</button>
                         </div>
                     </section>
-                <div>
+                </div>
             `;
         }
         return /*html*/`
-                <main class="container">
-                    <div class="error"></div>
+            <main>
+                <div class="error"></div>
+                    <section id="login-spot">
+                        <div class="toggle">
+                            <button class="auth-button" id="to-sign-up">New User?</button>
+                        </div>
+                    </section>
+
                     <section class="hidden" id="sign-up-spot">
                         <div class="toggle">
                             <button class="auth-button" id="to-login">Already have an account?</button>
                         </div>
                     </section>
-
-                    <section id="sign-in-spot">
-                        <div class="toggle">
-                            <button class="auth-button" id="to-sign-up">New User?</button>
-                        </div>
-                    </section>
-                </main>
+            </main>
         `;
     }
 }

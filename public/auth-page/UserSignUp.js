@@ -2,7 +2,7 @@ import Component from '../Component.js';
 
 class UserSignUp extends Component {
     onRender(form){
-        form.addEventListener('submit', event => {
+        form.addEventListener('submit', (event) => {
             event.preventDefault();
 
             const formData = new FormData(event.target);
