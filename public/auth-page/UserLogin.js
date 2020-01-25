@@ -8,6 +8,7 @@ class UserLogin extends Component {
             const formData = new FormData(event.target);
             
             const user = {
+                username: formData.get('username'),
                 email: formData.get('email'),
                 password: formData.get('password')
             };
@@ -21,7 +22,6 @@ class UserLogin extends Component {
             })
                 .then(res => res.json())
                 .then(user => {
-                    console.log('res from signup', user);
                     if(user._id){
                         window.location.href = '../my-pages.html';
                     }

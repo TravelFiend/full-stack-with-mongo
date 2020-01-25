@@ -1,11 +1,6 @@
 import Component from '../Component.js';
-import Header from '../common/Header.js';
 
 class App extends Component {
-    onRender(main){
-        const header = new Header();
-    }
-
     renderHTML(){
         return /*html*/`
             <main>

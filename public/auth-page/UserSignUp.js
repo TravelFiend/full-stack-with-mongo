@@ -8,7 +8,7 @@ class UserSignUp extends Component {
             const formData = new FormData(event.target);
             const user = {
                 username: formData.get('username'),
-                email: formData.get('username'),
+                email: formData.get('email'),
                 password: formData.get('password')
             };
 
@@ -22,7 +22,7 @@ class UserSignUp extends Component {
                 .then(res => res.json())
                 .then(user => {
                     if(user._id){
-                        window.location.href = '../mypages/my-pages.js';
+                        window.location.href = '../my-pages.html';
                     }
                     const error = document.createElement('div');
                     error.textContent = 'Incorrect email or password';

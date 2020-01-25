@@ -3,7 +3,7 @@ header {
     justify-content: space-between;
     padding: 10px;
     background: #27050b;
-    color: white;
+    color: #d5f2ff;
     z-index: 5;
     font-family: sans-serif;
 }
@@ -18,7 +18,7 @@ nav {
 }
 
 a {
-    color: white;
+    color: #d5f2ff;
     padding: 10px;
     text-decoration: none;;
 }

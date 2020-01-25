@@ -4,7 +4,8 @@ const request = require('supertest');
 const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
-const Page = require('../lib/models/Pages');
+const Page = require('../lib/models/Page');
+const User = require('../lib/models/User');
 
 describe('app routes', () => {
     beforeAll(() => {
@@ -50,6 +51,14 @@ describe('app routes', () => {
     });
 
     it('gets all pages', async() => {
+        await User.create({ email: 'george@carlin.com', username: 'GCarlin', password: 'biscuits' });
+
+        const agent = request.agent(app);
+
+        await agent
+            .post('/api/v1/auth/login')
+            .send({ email: 'george@carlin.com', username: 'GCarlin', password: 'biscuits' });
+
         const pages = await Page.create([{
             title: 'Titling is hard',
             pageDate: new Date('January 1, 2020'),
@@ -69,7 +78,7 @@ describe('app routes', () => {
                 noteDate: new Date('January 3, 2020')
             }]
         }]);
-        return request(app)
+        return agent
             .get('/api/v1/pages')
             .then(res => {
                 pages.forEach(page => {

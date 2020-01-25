@@ -12,8 +12,8 @@ class AuthPageApp extends Component {
         const loginSpot = dom.querySelector('#login-spot');
         const signup = new UserSignUp();
         const login = new UserLogin();
-        signUpSpot.appendChild(signup.renderDOM());
-        loginSpot.appendChild(login.renderDOM());
+        signUpSpot.prepend(signup.renderDOM());
+        loginSpot.prepend(login.renderDOM());
 
         const toggleToSignUp = dom.querySelector('#to-sign-up');
         toggleToSignUp.addEventListener('click', () => {
@@ -28,11 +28,11 @@ class AuthPageApp extends Component {
         });
     }
 
-    renderHTML(){
+    async renderHTML(){
         const user = this.props.user;
 
         if(user){
-            return `
+            return /*html*/`
                 <div class = "container" >
                     <section id="logout-section">
                         <p>Signed in as ${user}<p>

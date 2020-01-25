@@ -7,7 +7,7 @@ class Header extends Component {
             <h1>Notable Notes</h1>
             <nav>
                 <a href="./auth.html">Signup/Login</a>
-                <a href="./page-list">My Pages</a>
+                <a href="./my-pages.html">My Pages</a>
             </nav>
         </header>
         `;
