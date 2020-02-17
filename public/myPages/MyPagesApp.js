@@ -1,18 +1,29 @@
 import Component from '../Component.js';
 import Header from '../common/Header.js';
 import PageList from './PageList.js';
+import AddPageForm from './AddPageForm.js';
 
 class MyPagesApp extends Component {
     onRender(dom){
+        const user = this.props.user;
+        console.log({ DINGUS: user });
+        
         const header = new Header();
         dom.prepend(header.renderDOM());
 
         const pageList = new PageList({ pages: [] });
         dom.appendChild(pageList.renderDOM());
 
+        const addPageForm = new AddPageForm();
+        dom.appendChild(addPageForm.renderDOM());
+
         const fetchUserPages = async() => {
-            const pagesObj = await fetch('/api/v1/pages');
+            const pagesObj = await fetch(`/api/v1/pages/${user._id}`);
+            console.log({ BIPPITYBRRAP: pagesObj });
+            
             const pages = await pagesObj.json();
+            console.log({ BOPPITYBOOP: pages });
+            
             pageList.update({ pages });
         };
 
@@ -20,11 +31,14 @@ class MyPagesApp extends Component {
     }
 
     renderHTML(){
-        const user = JSON.stringify(this.props.user);
+        const user = this.props.user;
+        const pages = this.props.pages;
 
         return /*html*/`
             <div class="container">
-                <p>${user}</p>
+                <h2>${user.userName}'s Pages</h2>
+                <p>User Prop: ${user}</p>
+                <p>Pages prop: ${pages}</p>
             </div>
         `;
     }

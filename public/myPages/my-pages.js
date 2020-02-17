@@ -1,13 +1,14 @@
 import MyPagesApp from './MyPagesApp.js';
 
-const app = new MyPagesApp({ user: null });
-
 const fetchActiveUser = async() => {
     const userObj = await fetch('/api/v1/auth/verify');
-    const user = await userObj.json();
-    app.update({ user });
+    return await userObj.json();
 };
 
-fetchActiveUser();
+fetchActiveUser()
+    .then(user => {
+        console.log(user);
 
-document.body.prepend(app.renderDOM());
+        const app = new MyPagesApp({ user });
+        document.body.prepend(app.renderDOM());
+    });

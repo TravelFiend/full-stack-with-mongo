@@ -8,9 +8,8 @@ class UserLogin extends Component {
             const formData = new FormData(event.target);
             
             const user = {
-                username: formData.get('username'),
-                email: formData.get('email'),
-                password: formData.get('password')
+                email: formData.get('login-email'),
+                password: formData.get('login-password')
             };
 
             fetch('/api/v1/auth/login', {
@@ -18,6 +17,7 @@ class UserLogin extends Component {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: 'include',
                 body: JSON.stringify(user)
             })
                 .then(res => res.json())
@@ -37,15 +37,11 @@ class UserLogin extends Component {
         return /*html*/`
             <div>
                 <form id="login-form">
-                    <div>
-                        <label for="login-email">Email:<label>
+                        <label for="login-email">Email:</label>
                         <input class="user-input" id="login-email" name="login-email" type="email"/>
-                    </div>
 
-                    <div>
-                        <label for="login-password">Password:<label>
+                        <label for="login-password">Password:</label>
                         <input class="user-input" id="login-password" name="login-password" type="password"/>
-                    </div>
 
                     <button class="auth-button">Login</button>
                 </form>

@@ -4,19 +4,22 @@ class UserSignUp extends Component {
     onRender(form){
         form.addEventListener('submit', (event) => {
             event.preventDefault();
-
+            
             const formData = new FormData(event.target);
             const user = {
-                username: formData.get('username'),
+                userName: formData.get('userName'),
                 email: formData.get('email'),
                 password: formData.get('password')
             };
+            
+            console.log({ POJOHKJ: user });
 
             fetch('/api/v1/auth/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: 'include',
                 body: JSON.stringify(user)
             })
                 .then(res => res.json())
@@ -38,7 +41,7 @@ class UserSignUp extends Component {
                 <form id="sign-up-form">
                     <div>
                         <label for="name">Username:<label>
-                        <input class="user-input" id="username" name="username"/>
+                        <input class="user-input" id="userName" name="userName"/>
                     </div>
 
                     <div>

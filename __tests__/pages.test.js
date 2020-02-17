@@ -51,13 +51,13 @@ describe('app routes', () => {
     });
 
     it('gets all pages', async() => {
-        await User.create({ email: 'george@carlin.com', username: 'GCarlin', password: 'biscuits' });
+        await User.create({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
 
         const agent = request.agent(app);
 
         await agent
             .post('/api/v1/auth/login')
-            .send({ email: 'george@carlin.com', username: 'GCarlin', password: 'biscuits' });
+            .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
 
         const pages = await Page.create([{
             title: 'Titling is hard',
@@ -100,13 +100,13 @@ describe('app routes', () => {
     });
 
     it('gets a page by id', async() => {
-        await User.create({ email: 'george@carlin.com', username: 'GCarlin', password: 'biscuits' });
+        await User.create({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
 
         const agent = request.agent(app);
 
         await agent
             .post('/api/v1/auth/login')
-            .send({ email: 'george@carlin.com', username: 'GCarlin', password: 'biscuits' });
+            .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
 
         const page = await Page.create({
             title: 'Titling is hard',
@@ -139,13 +139,13 @@ describe('app routes', () => {
     });
 
     it('updates a page', async() => {
-        await User.create({ email: 'george@carlin.com', username: 'GCarlin', password: 'biscuits' });
+        await User.create({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
 
         const agent = request.agent(app);
 
         await agent
             .post('/api/v1/auth/login')
-            .send({ email: 'george@carlin.com', username: 'GCarlin', password: 'biscuits' });
+            .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
 
         const page = await Page.create({
             title: 'Titling is hard',
@@ -179,13 +179,13 @@ describe('app routes', () => {
     });
 
     it('deletes a page by id', async() => {
-        await User.create({ email: 'george@carlin.com', username: 'GCarlin', password: 'biscuits' });
+        await User.create({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
 
         const agent = request.agent(app);
 
         await agent
             .post('/api/v1/auth/login')
-            .send({ email: 'george@carlin.com', username: 'GCarlin', password: 'biscuits' });
+            .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
 
         const page = await Page.create({
             title: 'Titling is hard',
