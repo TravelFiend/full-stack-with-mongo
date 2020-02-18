@@ -6,8 +6,6 @@ import AddPageForm from './AddPageForm.js';
 class MyPagesApp extends Component {
     onRender(dom){
         const user = this.props.user;
-        console.log({ DINGUS: user });
-        
         const header = new Header();
         dom.prepend(header.renderDOM());
 
@@ -19,11 +17,7 @@ class MyPagesApp extends Component {
 
         const fetchUserPages = async() => {
             const pagesObj = await fetch(`/api/v1/pages/${user._id}`);
-            console.log({ BIPPITYBRRAP: pagesObj });
-            
             const pages = await pagesObj.json();
-            console.log({ BOPPITYBOOP: pages });
-            
             pageList.update({ pages });
         };
 

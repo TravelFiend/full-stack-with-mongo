@@ -40,11 +40,11 @@ class AuthPageApp extends Component {
         const user = this.props.user;
         console.log({ DINGUS: user });
         
-        if(user){
+        if(user.userName){
             return /*html*/`
                 <div class="container">
                     <section id="logout-section">
-                        <p>Signed in as ${user.email}<p>
+                        <p>Signed in as ${user.userName}<p>
                         <div>
                             <button>To My Notes</button>
                             <button>Logout</button>
