@@ -6,14 +6,44 @@ const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 const Page = require('../lib/models/Page');
 const User = require('../lib/models/User');
+const Note = require('../lib/models/Note');
 
 describe('app routes', () => {
+    const agent = request.agent(app);
+
     beforeAll(() => {
         connect();
     });
 
     beforeEach(() => {
         return mongoose.connection.dropDatabase();
+    });
+
+    let notes;
+    let page;
+    let user;
+    beforeEach(async() => {
+        user = await User.create({
+            email: 'george@carlin.com',
+            userName: 'GCarlin',
+            password: 'biscuits'
+        });
+
+        page = await Page.create({
+            userId: user._id,
+            title: 'Titling is hard',
+            pageDate: new Date('January 1, 2020')
+        });
+
+        notes = await Note.create([
+            {
+                pageId: page._id,
+                subtitle: 'Small title',
+                author: 'A writer',
+                text: 'some words they wrote',
+                noteDate: new Date('January 2, 2020')
+            }
+        ]);
     });
 
     afterAll(() => {
@@ -24,74 +54,43 @@ describe('app routes', () => {
         return request(app)
             .post('/api/v1/pages')
             .send({
+                userId: user._id,
                 title: 'Titling is hard',
-                pageDate: new Date('January 1, 2020'),
-                notes: [{ 
-                    subtitle: 'Small title',
-                    author: 'A writer',
-                    text: 'some words they wrote',
-                    noteDate: new Date('January 2, 2020')
-                }]
+                pageDate: new Date('January 1, 2020')
             })
             .then(res => {
                 expect(res.body).toEqual({
                     _id: expect.any(String),
+                    userId: expect.any(String),
                     title: 'Titling is hard',
                     pageDate: expect.any(String),
-                    notes: [{
-                        _id: expect.any(String),
-                        subtitle: 'Small title',
-                        author: 'A writer',
-                        text: 'some words they wrote',
-                        noteDate: expect.any(String)
-                    }],
                     __v: 0
                 });
             });
     });
 
     it('gets all pages', async() => {
-        await User.create({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
-
-        const agent = request.agent(app);
-
         await agent
             .post('/api/v1/auth/login')
             .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
 
-        const pages = await Page.create([{
-            title: 'Titling is hard',
-            pageDate: new Date('January 1, 2020'),
-            notes: [{
-                subtitle: 'Small title',
-                author: 'A writer',
-                text: 'some words they wrote',
-                noteDate: new Date('January 2, 2020')
-            }]
-        }, {
-            title: 'Bears are cool',
-            pageDate: new Date('January 2, 2020'),
-            notes: [{
-                subtitle: 'Even smaller title',
-                author: 'A different writer',
-                text: 'More words for the birds',
-                noteDate: new Date('January 3, 2020')
-            }]
-        }]);
         return agent
             .get('/api/v1/pages')
-            .then(res => {
-                pages.forEach(page => {
-                    expect(res.body).toContainEqual({
+            .then(pages => {
+                pages.body.forEach(page => {
+                    expect(page).toEqual({
                         _id: page._id.toString(),
+                        userId: user._id.toString(),
                         title: page.title,
-                        pageDate: page.pageDate.toISOString(),
+                        pageDate: page.pageDate,
                         notes: [{
-                            _id: expect.any(String),
-                            subtitle: page.notes[0].subtitle,
-                            author: page.notes[0].author,
-                            text: page.notes[0].text,
-                            noteDate: expect.any(String)
+                            _id: notes[0].id.toString(),
+                            pageId: page._id,
+                            subtitle: 'Small title',
+                            author: 'A writer',
+                            text: 'some words they wrote',
+                            noteDate: notes[0].noteDate.toISOString(),
+                            __v: 0
                         }],
                         __v: 0
                     });
@@ -100,38 +99,26 @@ describe('app routes', () => {
     });
 
     it('gets a page by id', async() => {
-        await User.create({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
-
-        const agent = request.agent(app);
-
         await agent
             .post('/api/v1/auth/login')
             .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
-
-        const page = await Page.create({
-            title: 'Titling is hard',
-            pageDate: new Date('January 1, 2020'),
-            notes: [{
-                subtitle: 'Small title',
-                author: 'A writer',
-                text: 'some words they wrote',
-                noteDate: new Date('January 2, 2020')
-            }]
-        });
 
         return agent
             .get(`/api/v1/pages/${page._id}`)
             .then(res => {
                 expect(res.body).toEqual({
                     _id: page._id.toString(),
+                    userId: user._id.toString(),
                     title: 'Titling is hard',
                     pageDate: expect.any(String),
                     notes: [{
                         _id: expect.any(String),
+                        pageId: page._id.toString(),
                         subtitle: 'Small title',
                         author: 'A writer',
                         text: 'some words they wrote',
-                        noteDate: expect.any(String)
+                        noteDate: expect.any(String),
+                        __v: 0
                     }],
                     __v: 0
                 });
@@ -139,24 +126,9 @@ describe('app routes', () => {
     });
 
     it('updates a page', async() => {
-        await User.create({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
-
-        const agent = request.agent(app);
-
         await agent
             .post('/api/v1/auth/login')
             .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
-
-        const page = await Page.create({
-            title: 'Titling is hard',
-            pageDate: new Date('January 1, 2020'),
-            notes: [{
-                subtitle: 'Small title',
-                author: 'A writer',
-                text: 'some words they wrote',
-                noteDate: new Date('January 2, 2020')
-            }]
-        });
 
         return agent
             .patch(`/api/v1/pages/${page._id}`)
@@ -164,39 +136,24 @@ describe('app routes', () => {
             .then(res => {
                 expect(res.body).toEqual({
                     _id: expect.any(String),
+                    userId: user._id.toString(),
                     title: 'It just got easier',
                     pageDate: expect.any(String),
-                    notes: [{
-                        _id: expect.any(String),
-                        subtitle: 'Small title',
-                        author: 'A writer',
-                        text: 'some words they wrote',
-                        noteDate: expect.any(String)
-                    }],
                     __v: 0
                 });
             });
     });
 
-    it('deletes a page by id', async() => {
-        await User.create({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
+    it('doesn\'t delete a page if it has associated notes', () => {
+        
+    });
 
+    it('deletes a page by id', async() => {
         const agent = request.agent(app);
 
         await agent
             .post('/api/v1/auth/login')
             .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
-
-        const page = await Page.create({
-            title: 'Titling is hard',
-            pageDate: new Date('January 1, 2020'),
-            notes: [{
-                subtitle: 'Small title',
-                author: 'A writer',
-                text: 'some words they wrote',
-                noteDate: new Date('January 2, 2020')
-            }]
-        });
 
         return agent
             .delete(`/api/v1/pages/${page._id}`)

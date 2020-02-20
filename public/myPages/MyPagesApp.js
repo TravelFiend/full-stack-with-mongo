@@ -12,7 +12,7 @@ class MyPagesApp extends Component {
         const pageList = new PageList({ pages: [] });
         dom.appendChild(pageList.renderDOM());
 
-        const addPageForm = new AddPageForm();
+        const addPageForm = new AddPageForm({ user });
         dom.appendChild(addPageForm.renderDOM());
 
         const fetchUserPages = async() => {

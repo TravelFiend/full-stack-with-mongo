@@ -38,7 +38,6 @@ class AuthPageApp extends Component {
 
     renderHTML(){
         const user = this.props.user;
-        console.log({ DINGUS: user });
         
         if(user.userName){
             return /*html*/`
