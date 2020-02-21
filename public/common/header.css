@@ -1,11 +1,13 @@
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
     background: #27050b;
-    color: #d5f2ff;
+    color: rgb(232, 219, 199);
     z-index: 5;
     font-family: sans-serif;
+    height: 58px;
 }
 
 h1 {
@@ -18,8 +20,8 @@ nav {
 }
 
 a {
-    color: #d5f2ff;
-    padding: 10px;
+    color: rgb(232, 219, 199);
+    padding: 10px 20px;
     text-decoration: none;;
 }
 

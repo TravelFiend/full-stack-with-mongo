@@ -4,8 +4,15 @@ import PageItem from './PageItem.js';
 class AddPageForm extends Component {
     onRender(dom){
         const user = this.props.user;
+        const pages = this.props.pages;
+        
         const form = dom.querySelector('form');
         const ul = dom.querySelector('ul');
+
+        pages.forEach(page => {
+            const pageItem = new PageItem({ page });
+            ul.prepend(pageItem.renderDOM());
+        });
 
         form.addEventListener('submit', event => {
             event.preventDefault();
@@ -28,11 +35,11 @@ class AddPageForm extends Component {
             })
                 .then(res => res.json())
                 .then(page => {
-                    console.log(page);
-                    const li = document.createElement('li');
-                    li.textContent = page.title;
-                    dom.appendChild(li);
+                    const pageItem = new PageItem({ page });
+                    ul.prepend(pageItem.renderDOM());
                 });
+
+            form.reset();
         });
     }
     renderHTML(){

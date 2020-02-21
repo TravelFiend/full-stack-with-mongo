@@ -15,6 +15,18 @@ class AuthPageApp extends Component {
 
         const header = new Header();
         dom.prepend(header.renderDOM());
+
+        const logoutButton = dom.querySelector('#logout-button');
+        logoutButton.addEventListener('click', () => {
+            console.log('SCHNIKLEFRITZ');
+
+            fetch('/api/v1/auth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        });
         
         const signUpSpot = dom.querySelector('#sign-up-spot');
         const loginSpot = dom.querySelector('#login-spot');
@@ -45,8 +57,8 @@ class AuthPageApp extends Component {
                     <section id="logout-section">
                         <p>Signed in as ${user.userName}<p>
                         <div>
-                            <button>To My Notes</button>
-                            <button>Logout</button>
+                            <button id="toNotes">To My Notes</button>
+                            <button id="logout-button">Logout</button>
                         </div>
                     </section>
                 </div>

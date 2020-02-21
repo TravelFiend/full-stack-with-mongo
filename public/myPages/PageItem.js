@@ -5,7 +5,7 @@ class PageItem extends Component {
         const page = this.props.page;
 
         return /*html*/`
-            <div>${page.title}</div>
+            <li name=${page._id}>${page.title}</li>
         `;
     }
 }

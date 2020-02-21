@@ -1,5 +1,52 @@
 main {
-    height: calc(100vh - 76px);
-    padding: 10px;
-    z-index: 1;
+    height: calc(100vh - 20vh);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: rgb(232, 219, 199);
+}
+
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 40px;
+    text-transform: uppercase;
+    word-spacing: 0.1em;
+}
+
+.lineOne {
+    margin-left: 175px;
+    opacity: 0;
+    animation: subIn 800ms forwards;
+}
+
+.lineTwo {
+    align-self: flex-end;
+    margin-right: 175px;
+    opacity: 0;
+    animation: subIn 800ms 800ms forwards;
+}
+
+.lineThree {
+    align-self: center;
+    font-size: 60px;
+    opacity: 0;
+    animation: tagline 1000ms 1600ms forwards;
+}
+
+@keyframes tagline {
+    70% {
+        font-size: 75px;
+        opacity: 0.8;
+    }
+    100% {
+        font-size: 60px;
+        opacity: 1;
+    }
+}
+
+@keyframes subIn {
+    100% {
+        opacity: 1;
+    }
 }
