@@ -5,14 +5,6 @@ import UserSignUp from './UserSignUp.js';
 
 class AuthPageApp extends Component {
     async onRender(dom) {
-        // const userObj = await fetch('/api/v1/auth/verify', {
-        //     credentials: 'include'
-        // });
-        // const user = await userObj.json();
-        // console.log(user);
-        
-        // this.update({ user });
-
         const header = new Header();
         dom.prepend(header.renderDOM());
 

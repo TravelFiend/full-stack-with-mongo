@@ -22,7 +22,6 @@ class MyPagesApp extends Component {
 
     renderHTML(){
         const user = this.props.user;
-        const pages = this.props.pages;
 
         return /*html*/`
             <div class="container">
