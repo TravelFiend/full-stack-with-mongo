@@ -5,8 +5,8 @@ class PageItem extends Component {
         const page = this.props.page;
 
         li.addEventListener('click', () => {
-            new URLSearchParams(`id=${page._id}`);
-            // window.location.href = `../my-pages/id=${page._id}`;
+            const queryStr = `?id=${page._id}`;
+            window.location.href = '../my-notes.html' + queryStr;
         });
 
     }

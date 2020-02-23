@@ -2,17 +2,19 @@ import Component from '../Component.js';
 
 class NoteForm extends Component {
     onRender(form){
-        const page = this.props.page;
+        const pageId = this.props.pageId;
+        const userName = this.props.userName;
 
         form.addEventListener('submit', (event) => {
             event.preventDefault();
 
             const formData = new FormData(event.target);
             const note = {
-                pageId: page._is,
+                pageId,
+                author: userName,
                 noteTitle: formData.get('noteTitle'),
                 text: formData.get('noteText'),
-                noteDate: new Date.now()
+                noteDate: new Date()
             };
 
             fetch('/api/v1/notes', {
@@ -20,6 +22,7 @@ class NoteForm extends Component {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: 'include',
                 body: JSON.stringify(note)
             });
         });
@@ -27,10 +30,10 @@ class NoteForm extends Component {
 
     renderHTML(){
         return /*html*/`
-            <form>
+            <form id="noteForm">
                 <label for="noteTitle">Note Title: </label>
-                <input type="text" id="noteTitle" placeholder="" />
-                <textarea id="noteText" placeholder="Type your note here"></textarea>
+                <input type="text" name="noteTitle" placeholder="" />
+                <textarea name="noteText" placeholder="Type your note here"></textarea>
                 <button>Add note</button>
             </form>
     `;
