@@ -8,6 +8,14 @@ class AuthPageApp extends Component {
         const header = new Header();
         dom.prepend(header.renderDOM());
 
+        
+        const signUpSpot = dom.querySelector('#sign-up-spot');
+        const loginSpot = dom.querySelector('#login-spot');
+        const signup = new UserSignUp();
+        const login = new UserLogin();
+        signUpSpot.prepend(signup.renderDOM());
+        loginSpot.prepend(login.renderDOM());
+        
         const logoutButton = dom.querySelector('#logout-button');
         logoutButton.addEventListener('click', () => {
             console.log('SCHNIKLEFRITZ');
@@ -19,14 +27,6 @@ class AuthPageApp extends Component {
                 }
             });
         });
-        
-        const signUpSpot = dom.querySelector('#sign-up-spot');
-        const loginSpot = dom.querySelector('#login-spot');
-        const signup = new UserSignUp();
-        const login = new UserLogin();
-        signUpSpot.prepend(signup.renderDOM());
-        loginSpot.prepend(login.renderDOM());
-
         const toggleToSignUp = dom.querySelector('#to-sign-up');
         toggleToSignUp.addEventListener('click', () => {
             signUpSpot.classList.remove('hidden');
