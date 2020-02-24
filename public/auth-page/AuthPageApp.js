@@ -8,6 +8,10 @@ class AuthPageApp extends Component {
         const header = new Header();
         dom.prepend(header.renderDOM());
 
+        const toPages = dom.querySelector('#toPages');
+        toPages.addEventListener('click', () => {
+            window.location.href = '../my-pages.html';
+        });
         
         const signUpSpot = dom.querySelector('#sign-up-spot');
         const loginSpot = dom.querySelector('#login-spot');
@@ -16,17 +20,18 @@ class AuthPageApp extends Component {
         signUpSpot.prepend(signup.renderDOM());
         loginSpot.prepend(login.renderDOM());
         
-        const logoutButton = dom.querySelector('#logout-button');
-        logoutButton.addEventListener('click', () => {
-            console.log('SCHNIKLEFRITZ');
+        // const logoutButton = dom.querySelector('#logout-button');
+        // logoutButton.addEventListener('click', () => {
+        //     console.log('SCHNIKLEFRITZ');
 
-            fetch('/api/v1/auth/logout', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-        });
+        //     fetch('/api/v1/auth/logout', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         }
+        //     });
+        // });
+
         const toggleToSignUp = dom.querySelector('#to-sign-up');
         toggleToSignUp.addEventListener('click', () => {
             signUpSpot.classList.remove('hidden');
@@ -49,7 +54,7 @@ class AuthPageApp extends Component {
                     <section id="logout-section">
                         <p>Signed in as ${user.userName}<p>
                         <div>
-                            <button id="toNotes">To My Notes</button>
+                            <button id="toPages">To My Pages</button>
                             <button id="logout-button">Logout</button>
                         </div>
                     </section>

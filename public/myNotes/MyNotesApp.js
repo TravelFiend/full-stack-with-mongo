@@ -10,8 +10,6 @@ class MyNotesApp extends Component {
         dom.prepend(header.renderDOM());
         let params = new URLSearchParams(document.location.search.substring(1));
         const pageId = params.get('id');
-        const noteView = new NoteView({ pageId });
-        dom.appendChild(noteView.renderDOM());
 
         const fetchActiveUser = async() => {
             const userObj = await fetch('/api/v1/auth/verify');
@@ -23,7 +21,10 @@ class MyNotesApp extends Component {
                 const userName = user.userName;
                 const noteForm = new NoteForm({ pageId, userName });
                 dom.appendChild(noteForm.renderDOM());
+                const noteView = new NoteView({ pageId });
+                dom.appendChild(noteView.renderDOM());
             });
+
     }
 
     renderHTML(){

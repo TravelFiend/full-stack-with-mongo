@@ -5,8 +5,7 @@ class PageItem extends Component {
         const page = this.props.page;
 
         li.addEventListener('click', () => {
-            const queryStr = `?id=${page._id}`;
-            window.location.href = '../my-notes.html' + queryStr;
+            window.location.href = `./my-notes.html?id=${page._id}`;
         });
 
     }
@@ -15,6 +14,7 @@ class PageItem extends Component {
         const page = this.props.page;
 
         return /*html*/`
+            
             <li>${page.title}</li>
         `;
     }

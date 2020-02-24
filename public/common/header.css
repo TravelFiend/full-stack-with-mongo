@@ -4,7 +4,7 @@ header {
     align-items: center;
     padding: 10px;
     background: #27050b;
-    color: rgb(232, 219, 199);
+    color: #D5F2FF;
     z-index: 5;
     font-family: sans-serif;
     height: 58px;
@@ -20,7 +20,7 @@ nav {
 }
 
 a {
-    color: rgb(232, 219, 199);
+    color: #D5F2FF;
     padding: 10px 20px;
     text-decoration: none;;
 }

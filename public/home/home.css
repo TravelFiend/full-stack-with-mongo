@@ -4,7 +4,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background: rgb(232, 219, 199);
+    background: #D5F2FF;
 }
 
 p {
