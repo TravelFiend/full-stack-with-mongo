@@ -1,9 +1,27 @@
 import Component from '../Component.js';
+import NoteItem from './NoteItem.js';
 
 class NoteForm extends Component {
-    onRender(form){
+    onRender(dom){
         const pageId = this.props.pageId;
         const userName = this.props.userName;
+
+        const form = dom.querySelector('form');
+        const ul = dom.querySelector('ul');
+
+        fetch('/api/v1/notes', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'pageId': pageId
+            },
+            credentials: 'include'
+        })
+            .then(res => res.json())
+            .then(notes => {
+                const noteItems = new NoteItem({ notes });
+                ul.appendChild(noteItems.renderDOM());
+            });
 
         form.addEventListener('submit', (event) => {
             event.preventDefault();
@@ -12,7 +30,7 @@ class NoteForm extends Component {
             const note = {
                 pageId,
                 author: userName,
-                noteTitle: formData.get('noteTitle'),
+                subtitle: formData.get('noteTitle'),
                 text: formData.get('noteText'),
                 noteDate: new Date()
             };
@@ -24,18 +42,29 @@ class NoteForm extends Component {
                 },
                 credentials: 'include',
                 body: JSON.stringify(note)
-            });
+            })
+                .then(res => res.json())
+                .then(note => {
+                    const noteItem = new NoteItem({ note });
+                    ul.appendChild(noteItem.renderDOM());
+                });
+
+            form.reset();
         });
     }
 
     renderHTML(){
         return /*html*/`
-            <form id="noteForm">
-                <label for="noteTitle">Note Title: </label>
-                <input type="text" name="noteTitle" placeholder="" />
-                <textarea name="noteText" placeholder="Type your note here"></textarea>
-                <button>Add note</button>
-            </form>
+            <section>
+                <form id="noteForm">
+                    <label for="noteTitle">Note Title: </label>
+                    <input type="text" name="noteTitle" placeholder="" />
+                    <textarea name="noteText" placeholder="Type your note here"></textarea>
+                    <button>Add note</button>
+                </form>
+                <ul>
+                </ul>
+            </section>
     `;
     }
 }
