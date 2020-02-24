@@ -70,4 +70,40 @@ describe('app routes', () => {
                 });
             });
     });
+
+    it('should get all notes from associated pageId', async() => {
+        await agent
+            .post('/api/v1/auth/login')
+            .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
+
+        await Note.create({
+            pageId: page._id,
+            subtitle: 'medium title',
+            author: 'Bob',
+            text: 'jingle bells',
+            noteDate: new Date('January 1, 2020')
+        });
+
+        await agent
+            .get(`/api/v1/notes/${page._id}`)
+            .then(notes => {
+                expect(notes.body).toEqual([{
+                    _id: expect.any(String),
+                    pageId: expect.any(String),
+                    author: 'A writer',
+                    noteDate: '2020-01-02T08:00:00.000Z',
+                    subtitle: 'Small title',
+                    text: 'some words they wrote',
+                    __v: 0,
+                }, {
+                    _id: expect.any(String),
+                    pageId: expect.any(String),
+                    author: 'Bob',
+                    noteDate: '2020-01-01T08:00:00.000Z',
+                    subtitle: 'medium title',
+                    text: 'jingle bells',
+                    __v: 0,
+                }]);
+            });
+    });
 });

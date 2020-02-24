@@ -4,6 +4,8 @@ import NoteItem from './NoteItem.js';
 class NoteForm extends Component {
     onRender(dom){
         const pageId = this.props.pageId;
+        console.log(pageId);
+        
         const userName = this.props.userName;
 
         const form = dom.querySelector('form');
