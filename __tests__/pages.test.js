@@ -19,7 +19,6 @@ describe('app routes', () => {
         return mongoose.connection.dropDatabase();
     });
 
-    let notes;
     let page;
     let user;
     beforeEach(async() => {
@@ -35,7 +34,7 @@ describe('app routes', () => {
             pageDate: new Date('January 1, 2020')
         });
 
-        notes = await Note.create([
+        await Note.create([
             {
                 pageId: page._id,
                 subtitle: 'Small title',
@@ -82,6 +81,15 @@ describe('app routes', () => {
                         _id: page._id.toString(),
                         userId: user._id.toString(),
                         title: page.title,
+                        notes: [{
+                            _id: expect.any(String),
+                            author: 'A writer',
+                            noteDate: '2020-01-02T08:00:00.000Z',
+                            pageId: expect.any(String),
+                            subtitle: 'Small title',
+                            text: 'some words they wrote',
+                            __v: 0,
+                        }],
                         pageDate: page.pageDate,
                         __v: 0
                     });

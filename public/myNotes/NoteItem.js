@@ -3,11 +3,21 @@ import Component from '../Component.js';
 class NoteItem extends Component {
     onRender(li){
         const note = this.props.note;
+        console.log(note);
+        
         const delButton = li.querySelector('.deleteButton');
         const editButton = li.querySelector('.editButton');
 
         delButton.addEventListener('click', () => {
-            console.log('this should delete');
+            const result = confirm('Are you sure you want to delete this note?');
+            if(result) {
+                fetch(`/api/v1/notes/${note._id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+            }
         });
 
         editButton.addEventListener('click', () => {
