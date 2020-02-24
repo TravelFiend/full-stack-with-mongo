@@ -11,11 +11,6 @@ class MyPagesApp extends Component {
         if(!user._id){
             window.location.href = '../auth.html';
         }
-
-        window.addEventListener('hashchange', () => {
-            console.log('Hash has been changed');
-            
-        });
         
         const addPageForm = new AddPageForm({ user, pages: [] });
         dom.appendChild(addPageForm.renderDOM());

@@ -13,14 +13,16 @@ class NoteForm extends Component {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'pageId': pageId
-            },
-            credentials: 'include'
+                pageId
+            }
         })
             .then(res => res.json())
             .then(notes => {
-                const noteItems = new NoteItem({ notes });
-                ul.appendChild(noteItems.renderDOM());
+                console.log(notes);
+                notes.map(note => {
+                    const noteItems = new NoteItem({ note });
+                    ul.appendChild(noteItems.renderDOM());
+                });
             });
 
         form.addEventListener('submit', (event) => {
