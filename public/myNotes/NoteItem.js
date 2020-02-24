@@ -17,6 +17,7 @@ class NoteItem extends Component {
                         'Content-Type': 'application/json'
                     }
                 });
+                li.classList.add('hidden');
             }
         });
 

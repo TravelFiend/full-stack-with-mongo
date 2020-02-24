@@ -12,11 +12,18 @@ class PageItem extends Component {
         delButton.addEventListener('click', () => {
             if(page.notes.length){
                 alert('This page cannot be deleted because it has notes');
+                return;
             }
 
-            const result = confirm('Want to delete?');
-            if(result){
-                fetch();
+            const result = confirm('Are you sure you want to delete this page?');
+            if(result) {
+                fetch(`/api/v1/notes/${page._id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                li.classList.add('hidden');
             }
         });
 
