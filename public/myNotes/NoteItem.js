@@ -1,28 +1,46 @@
 import Component from '../Component.js';
 
 class NoteItem extends Component {
-    onRender(ul){
+    onRender(li){
         const note = this.props.note;
+        const delButton = li.querySelector('.deleteButton');
+        const editButton = li.querySelector('.editButton');
 
-        const li = document.createElement('li');
-        const h1 = document.createElement('h1');
+        delButton.addEventListener('click', () => {
+            console.log('this should delete');
+        });
+
+        editButton.addEventListener('click', () => {
+            console.log('this will edit');
+        });
+
+        const h4 = document.createElement('h4');
         const p = document.createElement('p');
         const span1 = document.createElement('span');
         const span2 = document.createElement('span');
-        h1.textContent = note.subtitle;
+        const span3 = document.createElement('span');
+
+        h4.textContent = note.subtitle;
         p.textContent = note.text;
         span1.textContent = note.author;
         span2.textContent = note.noteDate;
-        p.appendChild(span1);
-        p.appendChild(span2);
+        span3.classList.add('deleteButton');
+
+        h4.appendChild(span1);
+        h4.appendChild(span2);
+        p.appendChild(span3);
         li.prepend(p);
-        li.prepend(h1);
-        ul.appendChild(li);
+        li.prepend(h4);
     }
 
     renderHTML() {
         return /*html*/`
-            <li></li>
+            <li>
+                <div class="buttons">
+                    <div class="editButton"></div>
+                    <div class="deleteButton"></div>
+                </div>
+            </li>
         `;
     }
 }

@@ -15,7 +15,12 @@ class PageItem extends Component {
 
         return /*html*/`
             
-            <li>${page.title}</li>
+            <li>${page.title}
+                <div class="buttons">
+                    <div class="editButton"></div>
+                    <div class="deleteButton"></div>
+                </div>
+            </li>
         `;
     }
 }
