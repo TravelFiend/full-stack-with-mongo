@@ -9,13 +9,7 @@ class NoteForm extends Component {
         const form = dom.querySelector('form');
         const ul = dom.querySelector('ul');
 
-        fetch('/api/v1/notes', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                pageId
-            }
-        })
+        fetch(`/api/v1/notes/${pageId}`)
             .then(res => res.json())
             .then(notes => {
                 console.log(notes);

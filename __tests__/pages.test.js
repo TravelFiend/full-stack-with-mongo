@@ -83,15 +83,6 @@ describe('app routes', () => {
                         userId: user._id.toString(),
                         title: page.title,
                         pageDate: page.pageDate,
-                        notes: [{
-                            _id: notes[0].id.toString(),
-                            pageId: page._id,
-                            subtitle: 'Small title',
-                            author: 'A writer',
-                            text: 'some words they wrote',
-                            noteDate: notes[0].noteDate.toISOString(),
-                            __v: 0
-                        }],
                         __v: 0
                     });
                 });
@@ -145,7 +136,7 @@ describe('app routes', () => {
     });
 
     it('doesn\'t delete a page if it has associated notes', () => {
-        
+        expect('this').toEqual('that');
     });
 
     it('deletes a page by id', async() => {
