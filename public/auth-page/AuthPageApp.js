@@ -14,7 +14,7 @@ class AuthPageApp extends Component {
         const login = new UserLogin();
         signUpSpot.prepend(signup.renderDOM());
         loginSpot.prepend(login.renderDOM());
-
+        
         // const logoutButton = dom.querySelector('#logout-button');
         // logoutButton.addEventListener('click', () => {
         //     console.log('SCHNIKLEFRITZ');
@@ -51,15 +51,18 @@ class AuthPageApp extends Component {
         
         if(user.userName){
             return /*html*/`
-                <div class="container">
-                    <section id="logout-section">
-                        <p>Signed in as ${user.userName}<p>
-                        <div>
-                            <button id="toPages">To My Pages</button>
-                            <button id="logout-button">Logout</button>
-                        </div>
-                    </section>
-                </div>
+                <main>
+                    <div class="logout">
+                        <section id="logout-section">
+                            <p>Signed in as ${user.userName}<p>
+                            <div id="buttons">
+                                <button id="logout-button">Logout</button>
+                                <button id="toPages">To My Pages</button>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="opaqueness"></div>
+                </main>
             `;
         }
         return /*html*/`

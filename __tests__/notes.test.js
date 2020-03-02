@@ -106,4 +106,8 @@ describe('app routes', () => {
                 }]);
             });
     });
+
+    it('should delete a note by id', () => {
+        
+    });
 });

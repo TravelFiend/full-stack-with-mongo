@@ -148,8 +148,6 @@ describe('app routes', () => {
     });
 
     it('deletes a page by id', async() => {
-        const agent = request.agent(app);
-
         await agent
             .post('/api/v1/auth/login')
             .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
