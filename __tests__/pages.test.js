@@ -143,10 +143,6 @@ describe('app routes', () => {
             });
     });
 
-    it('doesn\'t delete a page if it has associated notes', () => {
-        expect('this').toEqual('that');
-    });
-
     it('deletes a page by id', async() => {
         await agent
             .post('/api/v1/auth/login')
@@ -157,15 +153,9 @@ describe('app routes', () => {
             .then(res => {
                 expect(res.body).toEqual({
                     _id: page._id.toString(),
+                    userId: user._id.toString(),
                     title: 'Titling is hard',
                     pageDate: expect.any(String),
-                    notes: [{
-                        _id: expect.any(String),
-                        subtitle: 'Small title',
-                        author: 'A writer',
-                        text: 'some words they wrote',
-                        noteDate: expect.any(String)
-                    }],
                     __v: 0
                 });
             });

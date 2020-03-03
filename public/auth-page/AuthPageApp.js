@@ -32,14 +32,13 @@ class AuthPageApp extends Component {
             signUpSpot.classList.remove('hidden');
             loginSpot.classList.add('hidden');
         });
-
         
         const toggleToLogin = dom.querySelector('#to-login');
         toggleToLogin.addEventListener('click', () => {
             loginSpot.classList.remove('hidden');
             signUpSpot.classList.add('hidden');
         });
-        
+
         const toPages = dom.querySelector('#toPages');
         toPages.addEventListener('click', () => {
             window.location.href = '../my-pages.html';
