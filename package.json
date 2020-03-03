@@ -2,7 +2,7 @@
   "name": "full-stack-with-mongo",
   "version": "1.0.0",
   "description": "small full stack app",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest --verbose --runInBand",
     "test:watch": "npm run test -- --watch",
