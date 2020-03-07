@@ -45,7 +45,7 @@ class AddPageForm extends Component {
     renderHTML(){
         return /*html*/`
             <section>
-                <form>
+                <form id="addPageForm">
                     <label for="addPage">Enter title of new page: </label>
                     <input type="text" id="addPage" name="addPage" placeholder='e.g. "Biology"' />
                     <button>Add Page</button>

@@ -29,7 +29,7 @@ class MyPagesApp extends Component {
 
         return /*html*/`
             <div class="container">
-                <h2>${user.userName}'s Pages</h2>
+                <h2>${user.userName.charAt(0).toUpperCase() + user.userName.slice(1)}'s Notebooks</h2>
             </div>
         `;
     }

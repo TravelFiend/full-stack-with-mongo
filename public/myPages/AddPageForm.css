@@ -1,0 +1,18 @@
+label {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+#addPageForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  margin: 0 20px;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}

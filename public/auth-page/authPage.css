@@ -4,13 +4,13 @@ body, html {
 }
 
 .logout {
-    height: 91.7vh;
+    height: 90.1vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url('./aaron-burden-xG8IQMqMITM-unsplash.jpg');
+    background-image: url('../assets/aaron-burden-xG8IQMqMITM-unsplash.jpg');
     background-size: cover;
 }
 
@@ -25,20 +25,19 @@ body, html {
     align-items: center;
     border: 4px solid #27050b;
     border-radius: 10px;
-    background: #6c2a36;
-    opacity: 0.7;
+    background: rgba(108, 42, 54, 0.6);
     color: #D5F2FF;
     font-size: 2.7em;
     font-family: 'Nunito Sans', sans-serif;
     text-shadow: #000000 4px 4px 5px;
-    z-index: 5;
+    z-index: 1;
 }
 
 .opaqueness {
     position: absolute;
-    top: 8.3vh;
+    top: 9.9vh;
     left: 0;
-    height: 91.7vh;
+    height: 90.1vh;
     width: 100vw;
     background: #D5F2FF;
     opacity: 0.5;
@@ -57,7 +56,6 @@ button {
     margin: 30px;
     width: 150px;
     height: 50px;
-    opacity: 1;
     border-radius: 5px;
     background: #27050b;
     color: #D5F2FF;

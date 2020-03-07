@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo|Nunito+Sans:400,700&display=swap');
+
+h2 {
+  text-align: center;
+  margin: 40px;
+  font-size: 40px;
+  font-family: 'Baloo', cursive;
+  letter-spacing: 0.3rem;
+}
