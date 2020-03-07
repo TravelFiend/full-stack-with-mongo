@@ -7,7 +7,9 @@ const fetchActiveUser = async() => {
 
 fetchActiveUser()
     .then(user => {
-        console.log(user);
+        if(!user._id) {
+            window.location.href = '../auth.html';
+        }
 
         const app = new MyPagesApp({ user });
         document.body.prepend(app.renderDOM());

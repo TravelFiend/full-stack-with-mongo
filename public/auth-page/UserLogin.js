@@ -35,15 +35,22 @@ class UserLogin extends Component {
 
     renderHTML(){
         return /*html*/`
-            <div>
+            <div class="auth-box">
                 <form id="login-form">
-                        <label for="login-email">Email:</label>
-                        <input class="user-input" id="login-email" name="login-email" type="email"/>
+                    <div class="loginput">
+                        <label class="words" for="login-email">Email:</label>
+                        <input class="user-input" id="login-email" name="login-email" type="email" placeholder="sample@sample.com" />
+                    </div>
 
-                        <label for="login-password">Password:</label>
+                    <div class="loginput">
+                        <label class="words" for="login-password">Password:</label>
                         <input class="user-input" id="login-password" name="login-password" type="password"/>
+                    </div>
 
-                    <button class="auth-button">Login</button>
+                    <div class="auth-buttons">
+                        <button type="submit">Login</button>
+                        <button type="button" id="to-sign-up">New User?</button>
+                    </div>
                 </form>
             </div>
         `;

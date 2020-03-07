@@ -37,7 +37,7 @@ class UserSignUp extends Component {
 
     renderHTML(){
         return /*html*/`
-            <div>
+            <div class="auth-box">
                 <form id="sign-up-form">
                     <div>
                         <label for="name">Username:<label>
@@ -46,7 +46,7 @@ class UserSignUp extends Component {
 
                     <div>
                         <label for="email">Email:<label>
-                        <input class="user-input" id="email" name="email" type="email"/>
+                        <input class="user-input" id="email" name="email" type="email" placeholder="sample@sample.com"/>
                     </div>
 
                     <div>
@@ -54,7 +54,11 @@ class UserSignUp extends Component {
                         <input class="user-input" id="password" name="password" type="password"/>
                     </div>
 
-                    <button class="auth-button">Create Account</button>
+                    <div class="auth-buttons">
+                        <button type="submit">Create Account</button>
+                        <button type="button" id="to-login">Already have an account?</button>
+                    </div>
+
                 </form>
             </div>
         `;

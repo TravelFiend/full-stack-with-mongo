@@ -8,10 +8,6 @@ class MyPagesApp extends Component {
         const header = new Header();
         dom.prepend(header.renderDOM());
 
-        if(!user._id){
-            window.location.href = '../auth.html';
-        }
-        
         const addPageForm = new AddPageForm({ user, pages: [] });
         dom.appendChild(addPageForm.renderDOM());
         

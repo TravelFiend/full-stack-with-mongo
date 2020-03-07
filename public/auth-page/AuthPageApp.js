@@ -51,8 +51,8 @@ class AuthPageApp extends Component {
         if(user.userName){
             return /*html*/`
                 <main>
-                    <div class="logout">
-                        <section id="logout-section">
+                    <div class="auther">
+                        <section class="auth-box">
                             <p>Signed in as ${user.userName}<p>
                             <div id="buttons">
                                 <button id="logout-button">Logout</button>
@@ -67,17 +67,16 @@ class AuthPageApp extends Component {
         return /*html*/`
             <main>
                 <div class="error"></div>
-                <section id="login-spot">
-                    <div class="toggle">
-                        <button class="auth-button" id="to-sign-up">New User?</button>
-                    </div>
-                </section>
+                <div class="auther">
+                    <section id="login-spot">
+                        <div class="toggle"></div>
+                    </section>
 
-                <section class="hidden" id="sign-up-spot">
-                    <div class="toggle">
-                        <button class="auth-button" id="to-login">Already have an account?</button>
-                    </div>
-                </section>
+                    <section class="hidden" id="sign-up-spot">
+                        <div class="toggle"></div>
+                    </section>
+                </div>
+                <div class="opaqueness"></div>
             </main>
         `;
     }
