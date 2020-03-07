@@ -84,7 +84,7 @@ describe('app routes', () => {
                         notes: [{
                             _id: expect.any(String),
                             author: 'A writer',
-                            noteDate: '2020-01-02T08:00:00.000Z',
+                            noteDate: expect.any(String),
                             pageId: expect.any(String),
                             subtitle: 'Small title',
                             text: 'some words they wrote',
