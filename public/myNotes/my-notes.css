@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo|Nunito+Sans:400,700&display=swap');
+
 .buttons {
   display: flex;
   justify-content: flex-end;
@@ -23,11 +25,61 @@
 
 ul {
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 li {
+  padding: 15px;
   list-style: none;
-  width: 100vw;
+  width: 95vw;
   border: 3px solid black;
   border-radius: 10px;
+}
+
+#noteForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+span {
+  color: rgba(23, 23, 23, 0.3);
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 400;
+  margin-left: 20px;
+}
+
+#noteTitle {
+  display: flex;
+  align-items: center;
+  margin: 15px;
+}
+
+label {
+  font-size: 25px;
+  font-family: 'Nunito Sans', cursive;
+  margin-right: 10px;
+}
+
+#addNoteButton {
+  width: 400px;
+  height: 40px;
+  margin: 30px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: 'Baloo', cursive;
+}
+
+textarea {
+  width: 50vw;
+  height: 10vh;
+}
+
+input {
+  height: 23px; 
+  width: 400px;
+  border-radius: 5px;
 }

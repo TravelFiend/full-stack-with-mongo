@@ -55,15 +55,17 @@ class NoteForm extends Component {
         return /*html*/`
             <section>
                 <form id="noteForm">
-                    <label for="noteTitle">Note Title: </label>
-                    <input type="text" name="noteTitle" placeholder="" />
+                    <div id="noteTitle">
+                        <label for="noteTitle">Note Title: </label>
+                        <input type="text" name="noteTitle" placeholder="Your note subject here" />
+                    </div>
                     <textarea name="noteText" placeholder="Type your note here"></textarea>
-                    <button>Add note</button>
+                    <button id="addNoteButton">Add note</button>
                 </form>
                 <ul>
                 </ul>
             </section>
-    `;
+        `;
     }
 }
 

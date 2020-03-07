@@ -11,7 +11,7 @@ class PageItem extends Component {
 
         delButton.addEventListener('click', () => {
             if(page.notes.length){
-                alert('This page cannot be deleted because it has notes');
+                alert('This notebook cannot be deleted because it has notes');
                 return;
             }
 
@@ -43,7 +43,10 @@ class PageItem extends Component {
         return /*html*/`
             
             <li>
-                <h3>${page.title}</h3>
+                <div>
+                    <h3>${page.title}</h3>
+                    <hr />
+                </div>
                 <div class="buttons">
                     <div class="editButton"></div>
                     <div class="deleteButton"></div>

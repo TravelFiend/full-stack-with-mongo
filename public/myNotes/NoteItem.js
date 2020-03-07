@@ -37,9 +37,9 @@ class NoteItem extends Component {
         span2.textContent = note.noteDate;
         span3.classList.add('deleteButton');
 
+        p.appendChild(span3);
         h4.appendChild(span1);
         h4.appendChild(span2);
-        p.appendChild(span3);
         li.prepend(p);
         li.prepend(h4);
     }
