@@ -65,7 +65,7 @@ describe('app routes', () => {
                     author: user.userName.toString(),
                     subtitle: 'TAP',
                     text: 'The Abyssal Plane',
-                    noteDate: '2019-10-12T07:00:00.000Z',
+                    noteDate: expect.any(String),
                     __v: 0
                 });
             });
@@ -91,7 +91,7 @@ describe('app routes', () => {
                     _id: expect.any(String),
                     pageId: expect.any(String),
                     author: 'A writer',
-                    noteDate: '2020-01-02T08:00:00.000Z',
+                    noteDate: expect.any(String),
                     subtitle: 'Small title',
                     text: 'some words they wrote',
                     __v: 0,
@@ -99,7 +99,7 @@ describe('app routes', () => {
                     _id: expect.any(String),
                     pageId: expect.any(String),
                     author: 'Bob',
-                    noteDate: '2020-01-01T08:00:00.000Z',
+                    noteDate: expect.any(String),
                     subtitle: 'medium title',
                     text: 'jingle bells',
                     __v: 0,
