@@ -19,7 +19,6 @@ describe('app routes', () => {
         return mongoose.connection.dropDatabase();
     });
 
-    let notes;
     let page;
     let user;
     beforeEach(async() => {
@@ -35,7 +34,7 @@ describe('app routes', () => {
             pageDate: new Date('January 1, 2020')
         });
 
-        notes = await Note.create([{
+        await Note.create([{
             pageId: page._id,
             subtitle: 'Small title',
             author: 'A writer',

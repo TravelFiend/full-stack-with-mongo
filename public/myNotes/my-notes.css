@@ -32,11 +32,15 @@ ul {
 }
 
 li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 15px;
   list-style: none;
   width: 95vw;
   border: 3px solid black;
   border-radius: 10px;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 #noteForm {
@@ -82,4 +86,8 @@ input {
   height: 23px; 
   width: 400px;
   border-radius: 5px;
+}
+
+h4 {
+  margin: 0;
 }

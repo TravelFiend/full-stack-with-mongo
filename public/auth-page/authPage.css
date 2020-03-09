@@ -63,7 +63,7 @@ button {
     box-shadow: #000000 4px 4px 5px;
 }
 
-#login-spot, #sign-up-spot {
+#login-spot, #sign-up-spot, #logout-spot {
     z-index: 1;
 }
 

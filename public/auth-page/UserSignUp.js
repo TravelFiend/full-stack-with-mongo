@@ -58,7 +58,6 @@ class UserSignUp extends Component {
                         <button type="submit">Create Account</button>
                         <button type="button" id="to-login">Already have an account?</button>
                     </div>
-
                 </form>
             </div>
         `;

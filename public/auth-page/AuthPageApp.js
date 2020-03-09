@@ -1,31 +1,25 @@
 import Component from '../Component.js';
 import Header from '../common/Header.js';
 import UserLogin from './UserLogin.js';
+import UserLogout from './UserLogout.js';
 import UserSignUp from './UserSignUp.js';
 
 class AuthPageApp extends Component {
     async onRender(dom) {
+        const user = this.props.user;
+
         const header = new Header();
         dom.prepend(header.renderDOM());
         
+        const logoutSpot = dom.querySelector('#logout-spot');
         const signUpSpot = dom.querySelector('#sign-up-spot');
         const loginSpot = dom.querySelector('#login-spot');
+        const logout = new UserLogout({ user });
         const signup = new UserSignUp();
         const login = new UserLogin();
+        logoutSpot.prepend(logout.renderDOM());
         signUpSpot.prepend(signup.renderDOM());
         loginSpot.prepend(login.renderDOM());
-        
-        // const logoutButton = dom.querySelector('#logout-button');
-        // logoutButton.addEventListener('click', () => {
-        //     console.log('SCHNIKLEFRITZ');
-
-        //     fetch('/api/v1/auth/logout', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     });
-        // });
 
         const toggleToSignUp = dom.querySelector('#to-sign-up');
         toggleToSignUp.addEventListener('click', () => {
@@ -38,11 +32,6 @@ class AuthPageApp extends Component {
             loginSpot.classList.remove('hidden');
             signUpSpot.classList.add('hidden');
         });
-
-        const toPages = dom.querySelector('#toPages');
-        toPages.addEventListener('click', () => {
-            window.location.href = '../my-pages.html';
-        });
     }
 
     renderHTML(){
@@ -52,13 +41,7 @@ class AuthPageApp extends Component {
             return /*html*/`
                 <main>
                     <div class="auther">
-                        <section class="auth-box">
-                            <p>Signed in as ${user.userName}<p>
-                            <div id="buttons">
-                                <button id="logout-button">Logout</button>
-                                <button id="toPages">To My Pages</button>
-                            </div>
-                        </section>
+                        <section id="logout-spot"></section>
                     </div>
                     <div class="opaqueness"></div>
                 </main>
@@ -68,13 +51,9 @@ class AuthPageApp extends Component {
             <main>
                 <div class="error"></div>
                 <div class="auther">
-                    <section id="login-spot">
-                        <div class="toggle"></div>
-                    </section>
+                    <section id="login-spot"></section>
 
-                    <section class="hidden" id="sign-up-spot">
-                        <div class="toggle"></div>
-                    </section>
+                    <section class="hidden" id="sign-up-spot"></section>
                 </div>
                 <div class="opaqueness"></div>
             </main>

@@ -14,7 +14,6 @@ class NoteForm extends Component {
         fetch(`/api/v1/notes/${pageId}`)
             .then(res => res.json())
             .then(notes => {
-                console.log(notes);
                 notes.map(note => {
                     const noteItems = new NoteItem({ note });
                     ul.appendChild(noteItems.renderDOM());
@@ -57,7 +56,7 @@ class NoteForm extends Component {
                 <form id="noteForm">
                     <div id="noteTitle">
                         <label for="noteTitle">Note Title: </label>
-                        <input type="text" name="noteTitle" placeholder="Your note subject here" />
+                        <input type="text" name="noteTitle" placeholder="This is an optional field" />
                     </div>
                     <textarea name="noteText" placeholder="Type your note here"></textarea>
                     <button id="addNoteButton">Add note</button>

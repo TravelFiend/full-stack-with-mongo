@@ -3,8 +3,7 @@ import Component from '../Component.js';
 class NoteItem extends Component {
     onRender(li){
         const note = this.props.note;
-        console.log(note);
-        
+
         const delButton = li.querySelector('.deleteButton');
         const editButton = li.querySelector('.editButton');
 
