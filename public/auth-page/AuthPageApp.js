@@ -10,15 +10,19 @@ class AuthPageApp extends Component {
 
         const header = new Header();
         dom.prepend(header.renderDOM());
+
+        if(user._id){
+            const logoutSpot = dom.querySelector('#logout-spot');
+            const logout = new UserLogout({ user });
+            logoutSpot.prepend(logout.renderDOM());
+        }
         
-        const logoutSpot = dom.querySelector('#logout-spot');
         const signUpSpot = dom.querySelector('#sign-up-spot');
-        const loginSpot = dom.querySelector('#login-spot');
-        const logout = new UserLogout({ user });
         const signup = new UserSignUp();
-        const login = new UserLogin();
-        logoutSpot.prepend(logout.renderDOM());
         signUpSpot.prepend(signup.renderDOM());
+
+        const loginSpot = dom.querySelector('#login-spot');
+        const login = new UserLogin();
         loginSpot.prepend(login.renderDOM());
 
         const toggleToSignUp = dom.querySelector('#to-sign-up');
