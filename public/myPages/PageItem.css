@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo|Nunito+Sans:400,700&display=swap');
 
-.editButton, .deleteButton {
-  height: 20px;
-  width: 20px;
+.editButton {
+  height: 30px;
+  width: 30px;
   margin: 15px;
-  background: blue;
 }
 
 .deleteButton {
-  background: red;
+  opacity: 0.7;
+  height: 25px;
+  width: 25px;
+  margin: 17px;
 }
 
 h3 {

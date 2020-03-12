@@ -48,8 +48,8 @@ class PageItem extends Component {
                     <hr />
                 </div>
                 <div class="buttons">
-                    <div class="editButton"></div>
-                    <div class="deleteButton"></div>
+                    <img src="../assets/edit.png" class="editButton">
+                    <img src="../assets/x.png" class="deleteButton">
                 </div>
             </li>
         `;
