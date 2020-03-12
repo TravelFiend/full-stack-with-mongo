@@ -3,11 +3,9 @@ import Component from '../Component.js';
 class PageItem extends Component {
     onRender(li){
         const page = this.props.page;
-        console.log(page);
         
         const delButton = li.querySelector('.deleteButton');
         const editButton = li.querySelector('.editButton');
-        const button = li.querySelector('button');
         const title = li.querySelector('h3');
         const form = li.querySelector('form');
         const input = li.querySelector('input');

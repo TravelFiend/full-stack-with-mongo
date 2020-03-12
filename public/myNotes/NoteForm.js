@@ -54,8 +54,8 @@ class NoteForm extends Component {
         return /*html*/`
             <section>
                 <form id="noteForm">
-                    <div id="noteTitle">
-                        <label for="noteTitle">Note Title: </label>
+                    <div id="noteTitleForm">
+                        <label id="topNoteTitle" for="noteTitle">Note Title: </label>
                         <input type="text" name="noteTitle" placeholder="This is an optional field" />
                     </div>
                     <textarea name="noteText" placeholder="Type your note here"></textarea>

@@ -30,9 +30,10 @@ span {
   margin-left: 20px;
 }
 
-#noteTitle {
+#noteTitleForm {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 15px;
 }
 
@@ -60,7 +61,7 @@ textarea {
 
 input {
   height: 23px; 
-  width: 400px;
+  width: 300px;
   border-radius: 5px;
 }
 

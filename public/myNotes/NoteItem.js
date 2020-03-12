@@ -7,6 +7,8 @@ class NoteItem extends Component {
         const delButton = li.querySelector('.deleteButton');
         const editButton = li.querySelector('.editButton');
         const form = li.querySelector('form');
+        const input = li.querySelector('input');
+        const textarea = li.querySelector('textarea');
 
         const h4 = document.createElement('h4');
         const p = document.createElement('p');
@@ -43,12 +45,38 @@ class NoteItem extends Component {
             form.classList.toggle('hidden');
             p.classList.toggle('hidden');
             h4.classList.toggle('hidden');
+            input.value = note.subtitle;
+            textarea.value = note.text;
+        });
+
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+
+            const updatedNoteObj = {
+                subtitle: formData.get('subtitlePatch'),
+                text: formData.get('notePatch')
+            };
+
+            h4.textContent = formData.get('subtitlePatch');
+            p.textContent = formData.get('notePatch');
+
+            fetch(`api/v1/notes/${note._id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedNoteObj)
+            });
+
+            form.classList.toggle('hidden');
+            p.classList.toggle('hidden');
+            h4.classList.toggle('hidden');
         });
     }
 
     renderHTML() {
-        const note = this.props.note;
-
         return /*html*/`
             <li>
                 <form class="hidden">
