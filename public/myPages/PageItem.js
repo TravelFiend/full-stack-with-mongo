@@ -17,7 +17,7 @@ class PageItem extends Component {
 
             const result = confirm('Are you sure you want to delete this page?');
             if(result) {
-                fetch(`/api/v1/notes/${page._id}`, {
+                fetch(`/api/v1/pages/${page._id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'

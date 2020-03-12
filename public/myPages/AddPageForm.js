@@ -46,9 +46,9 @@ class AddPageForm extends Component {
         return /*html*/`
             <section>
                 <form id="addPageForm">
-                    <label for="addPage">Enter title of new page: </label>
+                    <label for="addPage">Enter title of new Notebook: </label>
                     <input type="text" id="addPage" name="addPage" placeholder='e.g. "Biology"' />
-                    <button>Add Page</button>
+                    <button>Add Notebook</button>
                 </form>
                 <ul>
                 </ul>

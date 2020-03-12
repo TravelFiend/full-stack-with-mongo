@@ -11,6 +11,7 @@ body, html {
     justify-content: center;
     align-items: center;
     background-image: url('../assets/aaron-burden-xG8IQMqMITM-unsplash.jpg');
+    background-position: center;
     background-size: cover;
 }
 
@@ -27,10 +28,11 @@ body, html {
     border-radius: 10px;
     background: rgba(108, 42, 54, 0.6);
     color: #D5F2FF;
-    font-size: 2.7em;
+    font-size: 2.5em;
     font-family: 'Nunito Sans', sans-serif;
     text-shadow: #000000 4px 4px 5px;
     z-index: 1;
+    max-width: 542px;
 }
 
 .opaqueness {
