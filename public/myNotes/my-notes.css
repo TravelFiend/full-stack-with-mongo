@@ -5,20 +5,6 @@
   justify-content: flex-end;
 }
 
-.deleteButton {
-  height: 30px;
-  width: 24px;
-  margin: 8px 20px 8px 0;
-  background: red;
-}
-
-.editButton {
-  height: 30px;
-  width: 24px;
-  margin: 8px 20px 8px 0;
-  background: blue;
-}
-
 .hidden {
   display: none;
 }
@@ -29,18 +15,6 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-li {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 15px;
-  list-style: none;
-  width: 95vw;
-  border: 3px solid black;
-  border-radius: 10px;
-  font-family: 'Nunito Sans', sans-serif;
 }
 
 #noteForm {
@@ -80,6 +54,7 @@ label {
 textarea {
   width: 50vw;
   height: 10vh;
+  border-radius: 5px;
 }
 
 input {

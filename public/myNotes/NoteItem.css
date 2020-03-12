@@ -1,0 +1,23 @@
+.deleteButton {
+  height: 25px;
+  width: 25px;
+  margin: 8px 20px 8px 0;
+}
+
+.editButton {
+  height: 30px;
+  width: 30px;
+  margin: 5px 20px 8px 0;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  list-style: none;
+  width: 93vw;
+  border: 3px solid black;
+  border-radius: 10px;
+  font-family: 'Nunito Sans', sans-serif;
+}
