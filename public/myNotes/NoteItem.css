@@ -21,3 +21,37 @@ li {
   border-radius: 10px;
   font-family: 'Nunito Sans', sans-serif;
 }
+
+form {
+  display: flex;
+}
+
+input {
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+#notePatch {
+  height: 36px;
+}
+
+.updateLabels {
+  font-size: 17px;
+}
+
+.patchIt {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#updateNoteButton {
+  margin: 15px 0 0 25px;
+  width: 120px;
+  height: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #27050B;
+  font-size: 16px;
+  font-family: 'Baloo',
+  cursive;
+}

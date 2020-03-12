@@ -52,9 +52,15 @@ class NoteItem extends Component {
         return /*html*/`
             <li>
                 <form class="hidden">
-                    <input type="text" id="subtitlePatch" name="subtitlePatch" />
-                    <input type="text" id="notePatch" name="notePatch" />
-                    <button>Update note</button>
+                    <div class="patchIt">
+                        <label class="updateLabels" for="subtitlePatch">Note Title: </label>
+                        <label class="updateLabels" for="notePatch">Note Text: </label>
+                    </div>
+                    <div class="patchIt">
+                        <input type="text" id="subtitlePatch" name="subtitlePatch" />
+                        <textarea type="text" id="notePatch" name="notePatch"></textarea>
+                    </div>
+                    <button id="updateNoteButton">Update note</button>
                 </form>
                 <div class="buttons">
                     <img src="../assets/edit.png" class="editButton">
