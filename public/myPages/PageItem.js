@@ -7,7 +7,10 @@ class PageItem extends Component {
         
         const delButton = li.querySelector('.deleteButton');
         const editButton = li.querySelector('.editButton');
+        const button = li.querySelector('button');
         const title = li.querySelector('h3');
+        const form = li.querySelector('form');
+        const input = li.querySelector('input');
 
         delButton.addEventListener('click', () => {
             if(page.notes.length){
@@ -28,13 +31,36 @@ class PageItem extends Component {
         });
 
         editButton.addEventListener('click', () => {
-            console.log('this will edit');
+            title.classList.toggle('hidden');
+            form.classList.toggle('hidden');
+            input.value = page.title;
         });
 
         title.addEventListener('click', () => {
             window.location.href = `./my-notes.html?id=${page._id}`;
         });
 
+        
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+
+            const formData = new FormData(event.target);
+            const newTitle = formData.get('titlePatch');
+            const newTitleObj = { title: newTitle };
+            title.textContent = newTitle;
+            input.value = newTitle;
+
+            fetch(`api/v1/pages/${page._id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newTitleObj)
+            });
+
+            title.classList.toggle('hidden');
+            form.classList.toggle('hidden');
+        });
     }
 
     renderHTML(){
@@ -45,6 +71,10 @@ class PageItem extends Component {
             <li>
                 <div>
                     <h3>${page.title}</h3>
+                    <form class="hidden">
+                        <input type="text" id="titlePatch" name="titlePatch" />
+                        <button>Update Title</button>
+                    </form>
                     <hr />
                 </div>
                 <div class="buttons">

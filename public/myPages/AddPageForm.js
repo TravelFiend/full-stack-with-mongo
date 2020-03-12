@@ -48,7 +48,7 @@ class AddPageForm extends Component {
                 <form id="addPageForm">
                     <label for="addPage">Enter title of new Notebook: </label>
                     <input type="text" id="addPage" name="addPage" placeholder='e.g. "Biology"' />
-                    <button>Add Notebook</button>
+                    <button id="addPage">Add Notebook</button>
                 </form>
                 <ul>
                 </ul>

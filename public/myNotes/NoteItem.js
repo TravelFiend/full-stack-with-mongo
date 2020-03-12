@@ -6,23 +6,7 @@ class NoteItem extends Component {
 
         const delButton = li.querySelector('.deleteButton');
         const editButton = li.querySelector('.editButton');
-
-        delButton.addEventListener('click', () => {
-            const result = confirm('Are you sure you want to delete this note?');
-            if(result) {
-                fetch(`/api/v1/notes/${note._id}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                li.classList.add('hidden');
-            }
-        });
-
-        editButton.addEventListener('click', () => {
-            console.log('this will edit');
-        });
+        const form = li.querySelector('form');
 
         const h4 = document.createElement('h4');
         const p = document.createElement('p');
@@ -41,11 +25,37 @@ class NoteItem extends Component {
         h4.appendChild(span2);
         li.prepend(p);
         li.prepend(h4);
+
+        delButton.addEventListener('click', () => {
+            const result = confirm('Are you sure you want to delete this note?');
+            if(result) {
+                fetch(`/api/v1/notes/${note._id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                li.classList.add('hidden');
+            }
+        });
+
+        editButton.addEventListener('click', () => {
+            form.classList.toggle('hidden');
+            p.classList.toggle('hidden');
+            h4.classList.toggle('hidden');
+        });
     }
 
     renderHTML() {
+        const note = this.props.note;
+
         return /*html*/`
             <li>
+                <form class="hidden">
+                    <input type="text" id="subtitlePatch" name="subtitlePatch" />
+                    <input type="text" id="notePatch" name="notePatch" />
+                    <button>Update note</button>
+                </form>
                 <div class="buttons">
                     <img src="../assets/edit.png" class="editButton">
                     <img src="../assets/x.png" class="deleteButton">
