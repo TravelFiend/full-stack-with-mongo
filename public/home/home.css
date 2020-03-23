@@ -29,16 +29,12 @@ p {
 
 .lineThree {
     align-self: center;
-    font-size: 60px;
+    font-size: 30px;
     opacity: 0;
     animation: tagline 1000ms 1600ms forwards;
 }
 
 @keyframes tagline {
-    70% {
-        font-size: 75px;
-        opacity: 0.8;
-    }
     100% {
         font-size: 60px;
         opacity: 1;

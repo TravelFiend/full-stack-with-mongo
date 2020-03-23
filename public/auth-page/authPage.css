@@ -37,9 +37,9 @@ body, html {
 
 .opaqueness {
     position: absolute;
-    top: 9.9vh;
+    top: 10vh;
     left: 0;
-    height: 90.1vh;
+    height: 90vh;
     width: 100vw;
     background: #D5F2FF;
     opacity: 0.5;

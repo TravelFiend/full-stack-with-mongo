@@ -6,7 +6,21 @@ class UserLogout extends Component {
         logoutButton.addEventListener('click', () => {
             console.log('SCHNIKLEFRITZ');
 
-            fetch('/api/v1/auth/logout');
+            fetch('/api/v1/auth/logout', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => {
+                    if(res.ok) {
+                        window.location = './auth.html';
+                        return res;
+                    }
+                    throw `Response: ${res.status}`;
+                });
+
         });
 
         const toPages = dom.querySelector('#toPages');
