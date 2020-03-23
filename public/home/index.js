@@ -1,4 +1,4 @@
-import App from './HomeApp.js';
+import App from 'https://note-noter.herokuapp.com/HomeApp.js';
 import Header from '../common/Header.js';
 
 const app = new App();

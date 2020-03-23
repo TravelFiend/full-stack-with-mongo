@@ -5,7 +5,7 @@ class App extends Component {
         return /*html*/`
             <main>
                 <p class="lineOne subText">Type some stuff</p>
-                <p class="lineThree">The Note Taking app of the Past!</p>
+                <p class="lineThree">Notable Notes!</p>
                 <p class="lineTwo subText">Organize that stuff</p>
             </main>
         `;
