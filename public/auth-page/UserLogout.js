@@ -18,7 +18,6 @@ class UserLogout extends Component {
                     }
                     throw `Response: ${res.status}`;
                 });
-
         });
 
         const toPages = dom.querySelector('#toPages');
