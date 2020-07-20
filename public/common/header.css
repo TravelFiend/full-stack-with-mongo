@@ -26,6 +26,7 @@ a {
     padding: 10px 20px;
     text-decoration: none;
     font-family: 'Nunito Sans', sans-serif;
+    cursor: pointer;
 }
 
 a:hover {
