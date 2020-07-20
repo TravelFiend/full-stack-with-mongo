@@ -20,6 +20,7 @@ describe('app routes', () => {
     });
 
     let page;
+    let note;
     let user;
     beforeEach(async() => {
         user = await User.create({
@@ -34,7 +35,7 @@ describe('app routes', () => {
             pageDate: new Date('January 1, 2020')
         });
 
-        await Note.create([{
+        note = await Note.create([{
             pageId: page._id,
             subtitle: 'Small title',
             author: 'A writer',
@@ -47,8 +48,12 @@ describe('app routes', () => {
         return mongoose.connection.close();
     });
 
-    it('should create a note', () => {
-        return request(app)
+    it('should create a note', async() => {
+        await agent
+            .post('/api/v1/auth/login')
+            .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
+
+        await agent
             .post('/api/v1/notes')
             .send({
                 pageId: page._id,
@@ -106,7 +111,44 @@ describe('app routes', () => {
             });
     });
 
-    it('should delete a note by id', () => {
-        
+    it('updates a page', async() => {
+        await agent
+            .post('/api/v1/auth/login')
+            .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
+
+        return agent
+            .patch(`/api/v1/notes/${note[0]._id}`)
+            .send({ author: 'Ghost' })
+            .then(res => {
+                expect(res.body).toEqual({
+                    _id: note[0]._id.toString(),
+                    pageId: page._id.toString(),
+                    subtitle: 'Small title',
+                    author: 'Ghost',
+                    text: 'some words they wrote',
+                    noteDate: note[0].noteDate.toISOString(),
+                    __v: 0
+                });
+            });
+    });
+
+    it('should delete a note by id', async() => {
+        await agent
+            .post('/api/v1/auth/login')
+            .send({ email: 'george@carlin.com', userName: 'GCarlin', password: 'biscuits' });
+
+        await agent
+            .delete(`/api/v1/notes/${note[0]._id}`)
+            .then(res => {
+                expect(res.body).toEqual({
+                    _id: note[0]._id.toString(),
+                    pageId: page._id.toString(),
+                    subtitle: 'Small title',
+                    author: 'A writer',
+                    text: 'some words they wrote',
+                    noteDate: note[0].noteDate.toISOString(),
+                    __v: 0
+                });
+            });
     });
 });
