@@ -1,4 +1,4 @@
 language: node_js
 node_js: node
 services: mongodb
-env: MONGODB_URI=mongodb://localhost:27017/travis, APP_SECRET=thisisasecret52345wetrwegwr
+env: DB_URI=mongodb+srv://heroku_gg9qtc6f:2ntqhe0gj91isr83re1pilk9e9@cluster-gg9qtc6f.qhzgc.mongodb.net/heroku_gg9qtc6f?retryWrites=true&w=majority, APP_SECRET=thisisasecret52345wetrwegwr
