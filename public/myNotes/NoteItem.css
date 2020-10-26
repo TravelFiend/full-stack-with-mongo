@@ -1,3 +1,7 @@
+img {
+	cursor: pointer;
+}
+
 .deleteButton {
   height: 25px;
   width: 25px;

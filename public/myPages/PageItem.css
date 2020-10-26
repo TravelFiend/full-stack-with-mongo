@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Baloo|Nunito+Sans:400,700&display=swap');
 
+img {
+	cursor: pointer;
+}
+
 .editButton {
   height: 30px;
   width: 30px;
